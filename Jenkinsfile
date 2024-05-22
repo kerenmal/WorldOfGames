@@ -5,6 +5,7 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
         IMAGE_NAME = 'kerenmal/WorldOfGames'
+        IMAGE_NAME1 = 'python:3-alpine'
     }
 
     stages {
@@ -13,7 +14,17 @@ pipeline {
                 checkout scm
             }
         }
+        stage('pull') {
+            steps {
+                script {
 
+                    docker.withRegistry('https://registry-1.docker.io', 'dockerhub') {
+                        def dockerImage = docker.image(IMAGE_NAME1)
+                        dockerImage.pull()
+                    }
+                }
+            }
+        }
         stage('Build') {
             steps {
                 script {
