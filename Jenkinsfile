@@ -4,7 +4,7 @@ pipeline {
     }
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-        IMAGE_NAME = 'kerenmal/WorldOfGames'
+        IMAGE_NAME = 'kerenmal/worldofgames'
     }
 
     stages {
