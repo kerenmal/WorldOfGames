@@ -1,6 +1,7 @@
 pipeline {
-    agent test
-
+    agent {
+        label 'test'
+    }
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
         IMAGE_NAME = 'kerenmal/WorldOfGames'
