@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     bat 'docker-compose down'
-                    bat 'echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin'
+                    bat 'docker login -u %DOCKERHUB_CREDENTIALS_USR% -p %DOCKERHUB_CREDENTIALS_PSW%'
                     bat 'docker push %IMAGE_NAME%'
                 }
             }
